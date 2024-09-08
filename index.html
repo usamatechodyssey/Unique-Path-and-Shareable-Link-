@@ -1,0 +1,26 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Create Your Resume</h1>
+        <form id="resumeForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter username" required>
+            <button type="submit">Generate Resume</button>
+        </form>
+        <div id="linkContainer"></div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
