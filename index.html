@@ -1,26 +1,218 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Builder</title>
+    <title>Interactive Resume Design</title>
     <link rel="stylesheet" href="style.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+    <!-- Include html2pdf.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 </head>
+
 <body>
+
     <div class="container">
-        <h1>Create Your Resume</h1>
-        <form id="resumeForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" placeholder="Enter username" required>
-            <button type="submit">Generate Resume</button>
-        </form>
-        <div id="linkContainer"></div>
+        <!-- Main Content Section (Resume Content) -->
+        <div class="main-content">
+            <!-- Left Section -->
+            <div class="left-section">
+                <div class="profile-container">
+                    <div class="profile-image-container">
+                        <img id="profileImage" src="Usama-Image.png" alt="Profile Picture" />
+                        <input type="file" id="uploadImage" accept="image/*" />
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <h1>John Doe</h1>
+                    <h2>FRONT END DEVELOPER</h2>
+                </div>
+
+                <div class="about-me">
+                    <h3>About Me</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                <div class="contact-info">
+                    <h3>Personal Information</h3>
+                    <p><i class="fas fa-envelope"></i> <strong>Mail:</strong> <span
+                            id="contact">john.doe@example.com</span></p>
+                    <p><i class="fas fa-phone"></i> <strong>Contact:</strong> <span id="contact">+123-456-7890</span>
+                    </p>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> <span id="contact">123 Anywhere
+                            St., Any City</span></p>
+                </div>
+
+                <!-- Button to Toggle Skills Section -->
+                <button id="toggleSkillsBtn"><i class="fas fa-star"></i> Toggle Skills</button>
+
+                <div class="skills" id="skillsSection">
+                    <h3>Language</h3>
+                    <ul>
+                        <li>English</li>
+                        <li>Urdu</li>
+                    </ul>
+                    <h3>Expertise</h3>
+                    <ul>
+                        <li>HTML/CSS</li>
+                        <li>JavaScript/TypeScript</li>
+                        <li>React/Angular</li>
+                        <li>Git/GitHub</li>
+                        <li>Management Skills</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Section -->
+            <div class="right-section">
+                <!-- Button to Toggle Experience Section -->
+                <button id="toggleExperienceBtn"><i class="fas fa-briefcase"></i> Toggle Experience</button>
+
+                <div class="experience" id="experienceSection">
+                    <div class="job">
+                        <h4>Front-end Developer:</h4>
+                        <p>Tech Company (2022-Present)</p>
+                    </div>
+                    <div class="job">
+                        <h4>Intern:</h4>
+                        <p>Software Solutions (2021)</p>
+                    </div>
+                </div>
+
+                <div class="education">
+                    <h3>Education</h3>
+                    <div class="degree">
+                        <h4>High School:</h4>
+                        <p>XYZ School (2016-2018)</p>
+                    </div>
+                    <div class="degree">
+                        <h4>Intermediate:</h4>
+                        <p>ABC Degree College (2018-2022)</p>
+                    </div>
+                    <div class="degree">
+                        <h4>Bachelor:</h4>
+                        <p>ABC University (2018-2022)</p>
+                    </div>
+                </div>
+
+                <div class="skills-summary">
+                    <h3>Skills Summary</h3>
+                    <div class="skill">
+                        <p>Design Process</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 78%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <p>Project Management</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 81%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="form-container">
+            <h2>Fill Your Resume Details</h2>
+            <form id="resumeForm">
+                <!-- Personal Information -->
+                <label for="name">Name:</label>
+                <input type="text" id="form-name" placeholder="Enter your name"><br>
+                <label for="title">Title:</label>
+                <input type="text" id="form-title" placeholder="e.g., Front End Developer"><br>
+                <label for="email">Email:</label>
+                <input type="email" id="form-email" placeholder="Enter your email"><br>
+                <label for="phone">Phone:</label>
+                <input type="text" id="form-phone" placeholder="Enter your phone"><br>
+                <label for="address">Address:</label>
+                <input type="text" id="form-address" placeholder="Enter your address"><br>
+
+                <!-- About Me -->
+                <label for="about">About Me:</label>
+                <textarea id="form-about" placeholder="Tell about yourself"></textarea><br>
+
+                <!-- Skills -->
+
+                <label for="skills">Skills (comma separated):</label>
+                <input type="text" id="form-skills" placeholder="Languages"><br>
+                <label for="skills">Skills (comma separated):</label>
+                <input type="text" id="form-skills" placeholder=" HTML, CSS, JavaScript"><br>
+
+                <!-- Experience -->
+                <label for="experience1-title">Experience - Job Title:</label>
+                <input type="text" id="form-experience1-title" placeholder="Front-end Developer"><br>
+                <label for="experience1-company">Experience - Company:</label>
+                <input type="text" id="form-experience1-company" placeholder=" Tech Company (2022-Present)"><br>
+
+                <!-- Education -->
+                <label for="education1">Education 1:</label>
+                <input type="text" id="form-education1" placeholder="High School, XYZ School (2016-2018)"><br>
+                <label for="education2">Education 2:</label>
+                <input type="text" id="form-education2" placeholder="Intermediate, ABC Degree College (2018-2022)"><br>
+                <label for="education3">Education 3:</label>
+                <input type="text" id="form-education3" placeholder=" Bachelor, ABC University (2018-2022)"><br>
+
+                <!-- Skills Summary -->
+                <label for="skill-summary1">Skill Summary 1 - Skill:</label>
+                <input type="text" id="form-skill-summary1" placeholder=" Design Process"><br>
+                <label for="skill-summary1-level">Skill Summary 1 - Proficiency (0-100):</label>
+                <input type="number" id="form-skill-summary1-level" placeholder="e.g. 78"><br>
+
+                <label for="skill-summary2">Skill Summary 2 - Skill:</label>
+                <input type="text" id="form-skill-summary2" placeholder="e.g., Project Management"><br>
+                <label for="skill-summary2-level">Skill Summary 2 - Proficiency (0-100):</label>
+                <input type="number" id="form-skill-summary2-level" placeholder="e.g. 81"><br>
+
+                <!-- Submit Button -->
+                <button type="button" onclick="generateResume()">Generate Resume</button>
+            </form>
+        </div>
+
+        <!-- Share and Download Buttons -->
+
+        <!-- Share and Download Buttons -->
+        <div class="actions">
+            <button onclick="copyLink()">Share Resume Link</button>
+            <button onclick="downloadPDF()">Download as PDF</button>
+        </div>
+
+        <!-- Hidden URL to be copied -->
+        <p id="url" style="display:none;">https://username.vercel.app/resume</p>
     </div>
 
 
+    </div>
+
+    <!-- JavaScript to Download PDF -->
+    <script>
+        function downloadPDF() {
+            // Select the container that holds the resume
+            var element = document.querySelector('.main-content');
+
+            // Options for html2pdf
+            var opt = {
+                margin: 0.5,
+                filename: 'resume.pdf',
+                image: { type: 'jpeg', quality: 1.0 },
+                html2canvas: { scale: 3 },  // Higher scale for better quality
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+
+            // Call html2pdf to generate PDF
+            html2pdf().from(element).set(opt).save();
+        }
+    </script>
+    <!-- Include TypeScript and jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <!-- Include TypeScript File -->
     <script src="script.js"></script>
 </body>
+
 </html>

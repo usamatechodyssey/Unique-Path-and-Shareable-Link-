@@ -1,7 +1,0 @@
-
-{
-    "rewrites": [
-      { "source": "/resume-:username.html", "destination": "/public/resume-template.html" }
-    ]
-  }
-  
